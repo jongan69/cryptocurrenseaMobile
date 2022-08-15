@@ -7,7 +7,7 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 
 import ProfileScreen from '../screens/ProfileScreen';
 import MessagesScreen from '../screens/MessagesScreen';
-import MomentsScreen from '../screens/MomentsScreen';
+import MuseumScreen from '../screens/MuseumScreen';
 import SettingsScreen from '../screens/SettingsScreen';
 
 import TabNavigator from './TabNavigator';
@@ -57,11 +57,11 @@ const AppStack = () => {
         }}
       />
       <Drawer.Screen
-        name="Moments"
-        component={MomentsScreen}
+        name="Museum Mode"
+        component={MuseumScreen}
         options={{
           drawerIcon: ({color}) => (
-            <Ionicons name="timer-outline" size={22} color={color} />
+            <Ionicons name="aperture-sharp" size={22} color={color} />
           ),
         }}
       />

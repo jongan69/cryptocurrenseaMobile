@@ -5,6 +5,7 @@ const FavoriteScreen = () => {
   return (
     <View style={{flex:1,justifyContent:'center',alignItems:'center'}}>
       <Text>Favorite Screen</Text>
+      <Text>All the users that liked your nfts</Text>
     </View>
   )
 }

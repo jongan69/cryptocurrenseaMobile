@@ -4,7 +4,7 @@ import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import { getFocusedRouteNameFromRoute } from '@react-navigation/native';
 
 import HomeScreen from '../screens/HomeScreen';
-import CartScreen from '../screens/CartScreen';
+import MintScreen from '../screens/MintScreen';
 import FavoriteScreen from '../screens/FavoriteScreen';
 import GameDetailsScreen from '../screens/GameDetailsScreen';
 
@@ -25,9 +25,9 @@ const HomeStack = () => {
       <Stack.Screen
         name="GameDetails"
         component={GameDetailsScreen}
-        options={({route}) => ({
-          title: route.params?.title,
-        })}
+        // options={({route}) => ({
+        //   title: route.params?.title,
+        // })}
       />
     </Stack.Navigator>
   );
@@ -57,11 +57,11 @@ const TabNavigator = () => {
         })}
       />
       <Tab.Screen
-        name="Cart"
-        component={CartScreen}
+        name="Mint"
+        component={MintScreen}
         options={{
           tabBarIcon: ({color, size}) => (
-            <Feather name="shopping-bag" color={color} size={size} />
+            <Feather name="cloud-snow" color={color} size={size} />
           ),
         }}
       />

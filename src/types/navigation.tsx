@@ -1,6 +1,9 @@
-export type MainStackParamList = {
+export type AppStackParamList = {
 	MainTabs: undefined;
-	SecondScreen: undefined;
+	Profile: undefined;
+	Messages: undefined;
+	Moments: undefined;
+	Settings: undefined;
 };
 
 export type AuthStackParamList = {
@@ -12,6 +15,7 @@ export type AuthStackParamList = {
 
 export type MainTabsParamList = {
 	Home: undefined;
-	Profile: undefined;
-	About: undefined;
+	Home2: undefined;
+	Mint: undefined;
+	Likes: undefined;
 };

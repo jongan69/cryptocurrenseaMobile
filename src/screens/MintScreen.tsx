@@ -1,12 +1,13 @@
 import React from 'react'
 import { View, Text } from 'react-native'
 
-const CartScreen = () => {
+const MintScreen = () => {
   return (
     <View style={{flex:1,justifyContent:'center',alignItems:'center'}}>
-      <Text>Cart Screen</Text>
+      <Text>Mint Screen</Text>
+      <Text>A place to mint NFTs</Text>
     </View>
   )
 }
 
-export default CartScreen
+export default MintScreen

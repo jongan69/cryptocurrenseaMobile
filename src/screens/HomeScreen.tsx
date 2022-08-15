@@ -7,6 +7,7 @@ import {
   ImageBackground,
   TextInput,
   TouchableOpacity,
+  Alert,
 } from 'react-native';
 import Feather from 'react-native-vector-icons/Feather';
 
@@ -29,18 +30,18 @@ import CustomSwitch from '../components/CustomSwitch';
 
 export default function HomeScreen({ navigation }) {
   const auth = useContext(AuthContext);
-	const user = auth.session;
+  const user = auth.session;
   // const wallet = useSelector((state: RootState) => state.wallet.walletAddress);
 
 
-  const [gamesTab, setGamesTab] = useState(1);
+  const [scrollTab, setScrollTab] = useState(1);
 
   const renderBanner = ({ item, index }) => {
     return <BannerSlider data={item} />;
   };
 
   const onSelectSwitch = value => {
-    setGamesTab(value);
+    setScrollTab(value);
   };
 
   return (
@@ -83,7 +84,7 @@ export default function HomeScreen({ navigation }) {
             color="#C6C6C6"
             style={{ marginRight: 5 }}
           />
-          <TextInput placeholder="Search" />
+          <TextInput placeholder="Search" placeholderTextColor="black"/>
         </View>
 
         <View
@@ -95,10 +96,12 @@ export default function HomeScreen({ navigation }) {
           <Text style={{ fontSize: 18, fontFamily: 'Roboto-Medium' }}>
             Upcoming NFT Drops
           </Text>
-          <TouchableOpacity onPress={() => { }}>
+          <TouchableOpacity onPress={() => { Alert.alert('Show all trending')}}>
             <Text style={{ color: '#0aada8' }}>See all</Text>
           </TouchableOpacity>
         </View>
+
+        <Text>A Carousel of trending collections</Text>
 
         {/* <Carousel
           ref={c => {
@@ -118,7 +121,15 @@ export default function HomeScreen({ navigation }) {
             option2="Minted"
             onSelectSwitch={onSelectSwitch}
           />
+          
         </View>
+        {scrollTab === 1 && <>
+          <Text>An infinite scroll of nfts</Text>
+        </>}
+
+        {scrollTab === 2 && <>
+          <Text>A view of your nfts</Text>
+        </>}
 
         {/* {gamesTab == 1 &&
           freeGames.map(item => (
@@ -136,6 +147,7 @@ export default function HomeScreen({ navigation }) {
               }
             />
           ))} */}
+
         {/* {gamesTab == 2 &&
           paidGames.map(item => (
             <ListItem
