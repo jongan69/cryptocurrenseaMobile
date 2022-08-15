@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import {
   View,
   Text,
@@ -12,6 +12,8 @@ import Feather from 'react-native-vector-icons/Feather';
 
 import BannerSlider from '../components/BannerSlider';
 import Layout from '../constants/Layout'
+import { AuthContext } from '../provider/AuthProvider';
+
 // import { RootState } from '../context/store';
 // import { useSelector } from 'react-redux';
 // import { AppContext } from '../context/AppProvider';
@@ -26,6 +28,8 @@ const windowWidth = Layout.window.width;
 import CustomSwitch from '../components/CustomSwitch';
 
 export default function HomeScreen({ navigation }) {
+  const auth = useContext(AuthContext);
+	const user = auth.session;
   // const wallet = useSelector((state: RootState) => state.wallet.walletAddress);
 
 
@@ -49,6 +53,7 @@ export default function HomeScreen({ navigation }) {
             marginBottom: 20,
           }}>
           <Text style={{ fontSize: 18, fontFamily: 'Roboto-Medium' }}>
+            Hello {user?.user.email}
             {/* Hello {wallet ? `${wallet?.slice(0, 6)}...${wallet.slice(wallet?.length - 4, wallet?.length)}` : 'No username'} */}
           </Text>
           <TouchableOpacity onPress={() => navigation.openDrawer()}>
@@ -88,7 +93,7 @@ export default function HomeScreen({ navigation }) {
             justifyContent: 'space-between',
           }}>
           <Text style={{ fontSize: 18, fontFamily: 'Roboto-Medium' }}>
-            Upcoming Games
+            Upcoming NFT Drops
           </Text>
           <TouchableOpacity onPress={() => { }}>
             <Text style={{ color: '#0aada8' }}>See all</Text>
@@ -109,8 +114,8 @@ export default function HomeScreen({ navigation }) {
         <View style={{ marginVertical: 20 }}>
           <CustomSwitch
             selectionMode={1}
-            option1="Free to play"
-            option2="Paid games"
+            option1="Trending"
+            option2="Minted"
             onSelectSwitch={onSelectSwitch}
           />
         </View>

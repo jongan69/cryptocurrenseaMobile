@@ -119,7 +119,8 @@ export default function ({
               }}
               disabled={loading}
             />
-            <Text style={{ textAlign: 'center', color: '#666', marginBottom: 20, marginTop: 20 }}>
+
+            {/* <Text style={{ textAlign: 'center', color: '#666', marginBottom: 20, marginTop: 20 }}>
               Or, login with ...
             </Text>
             <View
@@ -137,7 +138,7 @@ export default function ({
                   paddingHorizontal: 30,
                   paddingVertical: 10,
                 }}>
-                {/* <GoogleSVG height={24} width={24} /> */}
+                <GoogleSVG height={24} width={24} />
               </TouchableOpacity>
               <TouchableOpacity
                 onPress={() => { }}
@@ -148,7 +149,7 @@ export default function ({
                   paddingHorizontal: 30,
                   paddingVertical: 10,
                 }}>
-                {/* <AppleSVG height={24} width={24} /> */}
+                <AppleSVG height={24} width={24} />
               </TouchableOpacity>
               <TouchableOpacity
                 onPress={() => { }}
@@ -159,9 +160,10 @@ export default function ({
                   paddingHorizontal: 30,
                   paddingVertical: 10,
                 }}>
-                {/* <CoinbaseSVG height={24} width={24} /> */}
+                <CoinbaseSVG height={24} width={24} />
               </TouchableOpacity>
-            </View>
+            </View> */}
+
             <View
               style={{
                 flexDirection: 'row',
@@ -176,6 +178,8 @@ export default function ({
                 justifyContent: "center",
               }}
             >
+
+              
               <Text size="md">Don't have an account?</Text>
               <TouchableOpacity
                 onPress={() => {

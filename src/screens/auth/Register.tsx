@@ -33,9 +33,9 @@ export default function ({
       email: email,
       password: password,
     });
+    alert("Check your email for the login link!");
     if (!error && !user) {
       setLoading(false);
-      alert("Check your email for the login link!");
     }
     if (error) {
       setLoading(false);

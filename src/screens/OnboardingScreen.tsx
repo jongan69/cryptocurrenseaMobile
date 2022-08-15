@@ -19,7 +19,7 @@ const OnboardingScreen = ({ navigation }) => {
             fontFamily: 'Inter-Bold',
             fontWeight: 'bold',
             fontSize: 30,
-            color: '#20315f',
+            color: '#000',
           }}>
           Welcome
         </Text>
@@ -33,7 +33,7 @@ const OnboardingScreen = ({ navigation }) => {
       </View>
       <TouchableOpacity
         style={{
-          backgroundColor: '#AD40AF',
+          backgroundColor: '#000',
           padding: 20,
           width: '90%',
           borderRadius: 10,
