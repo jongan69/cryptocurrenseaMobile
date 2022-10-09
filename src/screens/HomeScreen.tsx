@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import {
   View,
   Text,
@@ -10,31 +10,43 @@ import {
   Alert,
 } from 'react-native';
 import Feather from 'react-native-vector-icons/Feather';
-
+import CustomSwitch from '../components/CustomSwitch';
 import BannerSlider from '../components/BannerSlider';
+import ListItem from '../components/ListItem';
+import Carousel from 'react-native-reanimated-carousel';
+
 import Layout from '../constants/Layout'
 import { AuthContext } from '../provider/AuthProvider';
+const windowWidth = Layout.window.width;
 
 // import { RootState } from '../context/store';
 // import { useSelector } from 'react-redux';
 // import { AppContext } from '../context/AppProvider';
 
 
-import ListItem from '../components/ListItem';
-import Carousel from 'react-native-snap-carousel';
-const windowWidth = Layout.window.width;
-
-// import {freeGames, paidGames, sliderData} from '../model/data';
-
-import CustomSwitch from '../components/CustomSwitch';
-
 export default function HomeScreen({ navigation }) {
   const auth = useContext(AuthContext);
   const user = auth.session;
-  // const wallet = useSelector((state: RootState) => state.wallet.walletAddress);
-
-
+  const trendnfts = auth.trendingNfts;
+  const trendnews = auth.trendingNews;
   const [scrollTab, setScrollTab] = useState(1);
+
+  // const [trendingNfts, setTrendingNfts] = useState(null);
+  // const [trendingNews, setTrendingNews] = useState(null);
+  // const [ownedNfts, setOwnedNfts] = useState(null);
+
+  useEffect(() => {
+    console.log('Home screen UseEffect')
+    if(trendnfts) console.log('Getting Trending NFT Collections', trendnfts)
+   
+    return () => {
+      // console.log('Getting Trending News Articles', trendnews)
+      if (scrollTab === 2) {
+        console.log('Getting Owned NFTs')
+      }
+    }
+  }, [trendnfts])
+
 
   const renderBanner = ({ item, index }) => {
     return <BannerSlider data={item} />;
@@ -84,7 +96,7 @@ export default function HomeScreen({ navigation }) {
             color="#C6C6C6"
             style={{ marginRight: 5 }}
           />
-          <TextInput placeholder="Search" placeholderTextColor="black"/>
+          <TextInput placeholder="Search" placeholderTextColor="black" />
         </View>
 
         <View
@@ -94,25 +106,28 @@ export default function HomeScreen({ navigation }) {
             justifyContent: 'space-between',
           }}>
           <Text style={{ fontSize: 18, fontFamily: 'Roboto-Medium' }}>
-            Upcoming NFT Drops
+            Top Rated NFTs
           </Text>
-          <TouchableOpacity onPress={() => { Alert.alert('Show all trending')}}>
+          <TouchableOpacity onPress={() => { Alert.alert('Show all trending') }}>
             <Text style={{ color: '#0aada8' }}>See all</Text>
           </TouchableOpacity>
         </View>
 
-        <Text>A Carousel of trending collections</Text>
+        <Text>A Carousel of top rated nft collections</Text>
 
-        {/* <Carousel
-          ref={c => {
-            this._carousel = c;
-          }}
-          data={sliderData}
-          renderItem={renderBanner}
-          sliderWidth={windowWidth - 40}
-          itemWidth={300}
-          loop={true}
-        /> */}
+        {trendnfts !== undefined && trendnfts !== null &&
+          <Carousel
+            loop
+            width={windowWidth}
+            height={windowWidth / 2}
+            autoPlay={true}
+            data={trendnfts}
+            scrollAnimationDuration={1000}
+            onSnapToItem={(index) => console.log('current index:', index)}
+            renderItem={renderBanner}
+          />
+        }
+
 
         <View style={{ marginVertical: 20 }}>
           <CustomSwitch
@@ -121,10 +136,10 @@ export default function HomeScreen({ navigation }) {
             option2="Minted"
             onSelectSwitch={onSelectSwitch}
           />
-          
+
         </View>
         {scrollTab === 1 && <>
-          <Text>An infinite scroll of nfts</Text>
+          <Text>An infinite scroll of top nft collections</Text>
         </>}
 
         {scrollTab === 2 && <>
